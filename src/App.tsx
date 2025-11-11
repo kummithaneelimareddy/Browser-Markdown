@@ -1,40 +1,72 @@
-import { useEffect, useRef, useState } from "react";
+{/*import { useEffect, useRef, useState } from "react";*/}
 {/*import reactLogo from "./assets/react.svg"/;*/}
 {/*import viteLogo from "/vite.svg";*/}
-import "./App.css";
+{/*import "./App.css";*/}
+import React, { useState } from 'react';
+import './App.css';
 
-
-function App() {
-  // Step 1: Create a theme state
+const App = () => {
+  const [markdown, setMarkdown] = useState('');
   const [theme, setTheme] = useState('light');
 
-  // Step 2: Function to toggle theme
-  const toggleTheme = () => {
-    if (theme === 'light') {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
-  };
+  const toggleTheme = () => setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
+
+  // Simple Markdown parser: Headings, Bold, Italic, Line breaks
+ 
+const parseMarkdown = (text: string): string => {
+  let html = text;
+
   
-return (
-  <div className={`app-container ${theme}`}>
-      {/* Toggle button at top right */}
+
+    // Headings
+    html = html.replace(/^### (.*)$/gim, '<h3>$1</h3>');
+    html = html.replace(/^## (.*)$/gim, '<h2>$1</h2>');
+    html = html.replace(/^# (.*)$/gim, '<h1>$1</h1>');
+
+    // Bold
+    html = html.replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>');
+
+    // Italic
+    html = html.replace(/\*(.*?)\*/gim, '<em>$1</em>');
+
+    // Line breaks
+    html = html.replace(/\n/gim, '<br />');
+
+    return html;
+  };
+
+  return (
+    <div className={`app-container ${theme}`}>
       <div className="top-right">
         <button onClick={toggleTheme}>
           {theme === 'light' ? ' Dark Mode' : ' Light Mode'}
         </button>
       </div>
 
-      <h1>Markdown Editor</h1>
-      <textarea placeholder="Write your markdown here..." />
+      <div className="editor-preview">
+        {/* Editable Markdown Section */}
+        <div className="editor">
+          <h2>MARKDOWN</h2>
+          <div
+            className="markdown-input"
+            contentEditable
+            onInput={(e) => setMarkdown(e.currentTarget.innerText)}
+          >
+            
+          </div>
+        </div>
+
+        {/* Preview */}
+        <div className="preview">
+          <h2>PREVIEW</h2>
+          <div
+            className="preview-content"
+            dangerouslySetInnerHTML={{ __html: parseMarkdown(markdown) }}
+          />
+        </div>
+      </div>
     </div>
   );
-}
+};
 
-    // Step 3: Apply theme class to main div
-
-
-      
-{/* You can add your editor and preview here */}
-  export default App;
+export default App;

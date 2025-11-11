@@ -68,24 +68,28 @@ button:focus-visible {
 }*/
 
 /* Make the container fill the entire screen */
-.app-container {
-  min-height: 100vh; /* full screen height */
+/* Full screen container */
+/*.app-container {
+  min-height: 100vh;
+  position: relative;
   padding: 20px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+}*/
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* Light Theme */
 .app-container.light {
   background-color: #ffffff;
   color: #000000;
 }
 
-/* Dark Theme */
 .app-container.dark {
   background-color: #121212;
   color: #ffffff;
 }
-
 
 .top-right {
   position: absolute;
@@ -93,10 +97,59 @@ button:focus-visible {
   right: 20px;
 }
 
-
-button {
-  margin-top: 10px;
-  padding: 8px 12px;
-  cursor: pointer;
+.editor-preview {
+  flex: 1;
+  display: flex;
+  gap: 0; /* Remove gap, we'll use border for divider */
+  margin-top: 60px;
+  border: 1px solid #333; /* Outer border */
 }
 
+.editor, .preview {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+/* Add vertical divider between editor and preview */
+.editor {
+  border-right: 1px solid #333;
+}
+
+.markdown-input {
+  flex: 1;
+  outline: none;
+  background-color: inherit;
+  color: inherit;
+  font-size: 16px;
+  white-space: pre-wrap;
+}
+
+.placeholder {
+  color: gray;
+  pointer-events: none;
+}
+
+.preview-content {
+  flex: 1;
+}
+
+/* Extra styling for Markdown elements */
+/*blockquote {
+  background: #2c2c2c;
+  padding: 10px;
+  border-left: 4px solid #888;
+  margin: 10px 0;
+  font-style: italic;
+}
+
+a {
+  color: #4da3ff;
+  text-decoration: underline;
+}
+
+ul {
+  padding-left: 20px;
+}*/

@@ -1,4 +1,4 @@
-function Child({name}){
+/*function Child({name}){
     return (
         <div>
             {name}
@@ -6,4 +6,4 @@ function Child({name}){
     )
 }
 
-export default Child;
+export default Child;*/
