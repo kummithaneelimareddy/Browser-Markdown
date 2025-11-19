@@ -66,19 +66,13 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }*/
-
-/* Make the container fill the entire screen */
-/* Full screen container */
-/*.app-container {
-  min-height: 100vh;
-  position: relative;
-  padding: 20px;
-}*/
-
+/* App Container */
+/* App Container */
 .app-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  font-family: Arial, sans-serif;
 }
 
 .app-container.light {
@@ -91,33 +85,134 @@ button:focus-visible {
   color: #ffffff;
 }
 
-.top-right {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
+/* Header Bar */
 
-.editor-preview {
-  flex: 1;
+.header-bar {
   display: flex;
-  gap: 0; /* Remove gap, we'll use border for divider */
-  margin-top: 60px;
-  border: 1px solid #333; /* Outer border */
+  justify-content: space-between;
+  align-items: center;
+  background-color:gray;
+  color: #fff;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensure full width */
+  box-sizing: border-box; /* Include padding in width */
+  z-index: 10;
+}
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.editor, .preview {
-  flex: 1;
+.header-title {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+
+.document-info {
+  display: flex;
+  flex-direction: column; /* Stack label and name vertically */
+  font-size: 14px;
+  color: #ccc;
+}
+
+
+
+doc-label {
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.doc-name {
+  color: #fff;
+  font-size: 14px;
+}
+
+
+/* Header Right */
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Menu Icon */
+.menu-icon {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+.delete-icon {
+  width: 20px;   /* Adjust size */
+  height: 20px;
+  cursor: pointer;
+  /*display: inline-block;*/
+}
+/* Buttons */
+.save-btn {
+  background: #ff6b6b;
+  border: none;
+  color: #fff;
+  padding: 10px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.save-btn:hover {
+  background-color: #e55a5a;
+}
+
+
+theme-toggle {
+  background: none;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+
+/* Editor & Preview Layout */
+.editor-preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid #333;
+  margin-top: 60px; /* Space for header */
+  height: calc(100vh - 100px);
+}
+
+.editor,
+.preview {
   display: flex;
   flex-direction: column;
-  padding: 15px;
-  overflow-y: auto;
 }
 
-/* Add vertical divider between editor and preview */
 .editor {
   border-right: 1px solid #333;
 }
 
+/* Panel Header */
+.panel-header {
+  border-bottom: 1px solid #333;
+  padding: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
+/* Markdown Input */
 .markdown-input {
   flex: 1;
   outline: none;
@@ -125,24 +220,22 @@ button:focus-visible {
   color: inherit;
   font-size: 16px;
   white-space: pre-wrap;
+  padding: 10px;
 }
 
-.placeholder {
-  color: gray;
-  pointer-events: none;
-}
-
+/* Preview Content */
 .preview-content {
   flex: 1;
+  padding: 10px;
 }
 
-/* Extra styling for Markdown elements */
-/*blockquote {
+/* Markdown Styling */
+blockquote {
   background: #2c2c2c;
   padding: 10px;
   border-left: 4px solid #888;
   margin: 10px 0;
-  font-style: italic;
+  color: white;
 }
 
 a {
@@ -152,4 +245,12 @@ a {
 
 ul {
   padding-left: 20px;
-}*/
+}
+
+/* Color-coded headings */
+.preview-content h1 { color: #ff6b6b; }
+.preview-content h2 { color: #feca57; }
+.preview-content h3 { color: #48dbfb; }
+.preview-content h4 { color: #1dd1a1; }
+.preview-content h5 { color: #5f27cd; }
+.preview-content h6 { color: #8395a7; }

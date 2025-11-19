@@ -1,73 +1,107 @@
-# React + TypeScript + Vite
+# learn-react
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Minimal React + TypeScript + Vite starter with a small two‑pane Markdown editor.
 
-Currently, two official plugins are available:
+## Features
+- Two‑pane editor: contentEditable Markdown input + live HTML preview
+- Lightweight regex-based parser (headings, blockquotes, lists, links, bold, italic, inline code)
+- Light / Dark theme toggle
+- Vite + TypeScript + ESLint configured
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Requirements
+- Node.js 18+
+- npm / yarn / pnpm
 
-## React Compiler
+## Quick start (Windows)
+1. Install dependencies
+   npm install
+2. Start dev server
+   npm run dev
+3. Build
+   npm run build
+4. Lint
+   npm run lint
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+(Check package.json for exact script names.)
 
-## Expanding the ESLint configuration
+## Project layout
+- src/App.tsx — main editor + preview (parseMarkdown)
+- src/main.tsx — app entry
+- src/App.css, src/index.css — styles
+- vite.config.ts — Vite config
+- eslint.config.js — ESLint config
+- tsconfig.app.json, tsconfig.node.json — TypeScript configs
+- src/assets — icons used in UI
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Important notes
+- The included markdown parser is minimal and regex-based. It is not a full CommonMark implementation. For production use, replace with a proper parser (e.g. react-markdown, markdown-it).
+- Preview uses `dangerouslySetInnerHTML`. Sanitize any untrusted input (e.g. DOMPurify) before rendering to avoid XSS.
+- The editor uses a `contentEditable` div (no textarea). Implement placeholder behavior with CSS/data-attributes; do not use `placeholder` on a div.
+- Enabling type-aware ESLint rules requires parserOptions.project to reference valid tsconfig files and will slow lint runs.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Recommendations
+- Replace ad-hoc parser with a library for correctness and safety.
+- Sanitize HTML before injecting.
+- Run type-checked ESLint in CI; use lighter checks locally to reduce friction.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Contributing
+- Run lint (and tests if added) before opening PRs.
+- Keep changes focused and update README when adding scripts/configs.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## License
+MIT
+```// filepath: c:\project\learn-react\README.md```
+# learn-react
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Minimal React + TypeScript + Vite starter with a small two‑pane Markdown editor.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Features
+- Two‑pane editor: contentEditable Markdown input + live HTML preview
+- Lightweight regex-based parser (headings, blockquotes, lists, links, bold, italic, inline code)
+- Light / Dark theme toggle
+- Vite + TypeScript + ESLint configured
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Requirements
+- Node.js 18+
+- npm / yarn / pnpm
+
+## Quick start (Windows)
+1. Install dependencies
+   npm install
+2. Start dev server
+   npm run dev
+3. Build
+   npm run build
+4. Lint
+   npm run lint
+
+(Check package.json for exact script names.)
+
+## Project layout
+- src/App.tsx — main editor + preview (parseMarkdown)
+- src/main.tsx — app entry
+- src/App.css, src/index.css — styles
+- vite.config.ts — Vite config
+- eslint.config.js — ESLint config
+- tsconfig.app.json, tsconfig.node.json — TypeScript configs
+- src/assets — icons used in UI
+
+## Important notes
+- The included markdown parser is minimal and regex-based. It is not a full CommonMark implementation. For production use, replace with a proper parser (e.g. react-markdown, markdown-it).
+- Preview uses `dangerouslySetInnerHTML`. Sanitize any untrusted input (e.g. DOMPurify) before rendering to avoid XSS.
+- The editor uses a `contentEditable` div (no textarea). Implement placeholder behavior with CSS/data-attributes; do not use `placeholder` on a div.
+- Enabling type-aware ESLint rules requires parserOptions.project to reference valid tsconfig files and will slow lint runs.
+
+## Recommendations
+- Replace ad-hoc parser with a library for correctness and safety.
+- Sanitize HTML before injecting.
+- Run type-checked ESLint in CI; use lighter checks locally to reduce friction.
+
+## Contributing
+- Run lint (and tests if added) before opening PRs.
+- Keep changes focused and update README when adding scripts/configs.
+
+## License
+[MIT](https://github.com/kummithaneelimareddy/learn-react/blob/main/LICENSE)
+
+
