@@ -11,6 +11,9 @@ Minimal React + TypeScript + Vite starter with a small two‑pane Markdown edito
 ## Requirements
 - Node.js 18+
 - npm / yarn / pnpm
+  
+## Demo video
+[click to watch demo](https://capgemini-my.sharepoint.com/:v:/p/kummitha_neelima/IQCTFdg5t3srQJtiCrL3VdX7AV9HQj4AsYYgl3S_mR_7BbQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=tb6QdM)
 
 ## Quick start (Windows)
 1. Install dependencies
