@@ -1,6 +1,6 @@
 # learn-react
 
-Minimal React + TypeScript + Vite starter with a small two‑pane Markdown editor.
+Minimal React + TypeScript + Vite starter with a small two‑pane Markdown editor..
 
 ## Features
 - Two‑pane editor: contentEditable Markdown input + live HTML preview
